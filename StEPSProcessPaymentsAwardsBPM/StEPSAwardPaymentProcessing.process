@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="ca568828-3ec0-4555-a049-e517958fd58c" bpmnStyle="false" build="1"
+  canvasPool="1" creator="SAAS03" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  name="StEPSAwardPaymentProcessing" processCategory="" rnSync="false"
+  runtimeVersion="4" transitionLabelPref="expression"
+  unSynchJoinDeadPath="true" version="9.12.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="runAwardPayments" name="{ProcessNamespace}runAwardPayments" type="{StEPS_Payments.awards.documents}runAwardPayments"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="awardInstalments" name="{ProcessNamespace}awardInstalments" type="{StEPS_Payments.awards.documents}awardInstalments"/>
+  <logicalDataItem Id="" description="" dimension="1" label="BACSFiles"
+    name="{ProcessNamespace}BACSFiles" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="payment_run_date" name="{ProcessNamespace}payment_run_date" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <pool Id="505f7e1b-f14a-4f95-895c-91027f40c824" blue="128"
+    containerType="LEGACY_WEBM_SUBPROCESS" errorHandler="S70"
+    external="false" externalizeConditions="false" green="128"
+    isCollapsed="false" isCompensating="false" isTestAfter="false"
+    label="Pool" labelBlue="255" labelGreen="204" labelRed="153"
+    logicalServer="" loopMaximum="0" loopMaximumField="" name="8"
+    orientation="vertical" red="128" retryCount="0" stepLock="false"
+    uid="P9" useCorrelation="false" wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.:Pool">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <dataItem type="{StEPS_Payments.awards.documents}runAwardPayments" uid="V81"/>
+    <terminateStep Id="994d6c0d-0051-4da4-a91c-26bd4f4baf78"
+      escalateFailure="false" height="35" label="Terminate"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" terminateStatus="FAIL" uid="S73"
+      useCorrelation="false" width="35"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:Terminate"
+      x="616" y="286">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </terminateStep>
+    <receiveStep Id="79926873-4364-402d-a8ff-b05d6fe6026c"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="START"
+      externalizeConditions="false" height="35"
+      isStartStepServiceRequired="true" label="Receive" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default"
+      outputMessageType="{StEPS_Payments.awards.documents}runAwardPayments"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S11" useCorrelation="false" width="35"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:Receive"
+      x="4" y="150">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <invokeStep Id="972c3fac-6c6a-40d5-a028-a4db1e3c9418"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="StEPS_Payments.awards.services.bpm"
+      invokeId="" invokeLocation="" invokeName="selectAwardInstalments"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="SELECT AWARDS" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="BLAZERULE"
+      stepLock="false" uid="S13" useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:SELECT_AWARDS"
+      x="57" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <output name="{ProcessNamespace}awardInstalments"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="257eb193-934c-4bee-8681-c839dc93bab3"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="VALIDATE AWARDS" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S16"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:VALIDATE AWARDS"
+      x="164" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}awardInstalments"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}awardInstalments"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="d2502385-7dbb-4997-bb0e-0be796dc8c36"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="PAYMENT PROCESSING" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S19"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:PAYMENT PROCESSING"
+      x="265" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}awardInstalments"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}payment_run_date"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="3db1e442-81dd-4839-a64f-c3e22aad4cea"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AGGREGATE PAYMENTS" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S22"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:AGGREGATE PAYMENTS"
+      x="365" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}payment_run_date"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}payment_run_date"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="f8bcf771-e992-4d38-aea7-7bc904e5b75d"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="BACS FILES" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S25"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:BACS FILES"
+      x="472" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}payment_run_date"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}BACSFiles"/>
+      <output name="{ProcessNamespace}payment_run_date"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="f77b96b5-b674-46d5-9ff3-ac698474584c"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="ADI_JOURNALS" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S28"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:ADI_JOURNALS"
+      x="579" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}BACSFiles"/>
+      <input name="{ProcessNamespace}payment_run_date"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}BACSFiles"/>
+      <output name="{ProcessNamespace}payment_run_date"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="593a8a87-d1ae-48be-8003-f5d8f20a34c7"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="UPDATE STATUS" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S31"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:UPDATE STATUS"
+      x="686" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}BACSFiles"/>
+      <input name="{ProcessNamespace}payment_run_date"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="cfa682b1-3cdc-4a69-b88c-f32022b8221c"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="StEPS_Payments.common.services.bpm"
+      invokeId="StEPS_Payments.common.services.bpm:error"
+      invokeLocation="" invokeName="error" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false" label="Error"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_error_stop_sign.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S70"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:Error"
+      x="372" y="277">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="7a90d01d-da73-4a4a-87b9-14566cddd0e5"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="PAYMENT RESTRICT LETTERS"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" ornamentKey="32_task.png"
+      retryCount="0" routingRuleSet="" ruleType="BLAZERULE"
+      stepLock="false" uid="S82" useCorrelation="false" width="83"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:PAYMENT RESTRICT LETTERS"
+      x="793" y="146">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="392cb0b5-2a43-4e9b-9ce1-6b97d7bac415" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S16"
+      sourceLocation="247,172" sourceTerminal="RIGHT" target="S19"
+      targetLocation="265,172" targetTerminal="LEFT" uid="T36">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="ba5d905f-37c9-4c03-af5e-2df9fce5bbee" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S19"
+      sourceLocation="348,172" sourceTerminal="RIGHT" target="S22"
+      targetLocation="365,172" targetTerminal="LEFT" uid="T37">
+      <bendpoint index="0" location="442,222" weight="0.5"/>
+      <bendpoint index="1" location="442,222" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="efad2963-b35a-4290-a642-54389c4c900f" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S22"
+      sourceLocation="448,172" sourceTerminal="RIGHT" target="S25"
+      targetLocation="472,172" targetTerminal="LEFT" uid="T38">
+      <bendpoint index="0" location="546,222" weight="0.5"/>
+      <bendpoint index="1" location="546,222" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="49b34a3c-f7a8-4ec4-9f2d-b4e5a9edef28" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S25"
+      sourceLocation="555,172" sourceTerminal="RIGHT" target="S28"
+      targetLocation="579,172" targetTerminal="LEFT" uid="T39">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="72570e1d-2a96-4246-9a9b-eab8ca55d05b" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S28"
+      sourceLocation="662,172" sourceTerminal="RIGHT" target="S31"
+      targetLocation="686,172" targetTerminal="LEFT" uid="T40">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="6ff4ae5e-71cd-464a-861a-682b12246496" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S70"
+      sourceLocation="455,303" sourceTerminal="RIGHT" target="S73"
+      targetLocation="616,303" targetTerminal="LEFT" uid="T74">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="3494e74c-14a2-48dc-ad3e-b5853f3cd6d9" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S13"
+      sourceLocation="140,172" sourceTerminal="RIGHT" target="S16"
+      targetLocation="164,172" targetTerminal="LEFT" uid="T75">
+      <bendpoint index="0" location="238,222" weight="0.5"/>
+      <bendpoint index="1" location="238,222" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="fe5b8cea-0127-404c-94e8-31f2cceec058" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S31"
+      sourceLocation="769,172" sourceTerminal="RIGHT" target="S82"
+      targetLocation="793,172" targetTerminal="LEFT" uid="T85">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="f909a3db-f00d-429c-aff4-729ff43579c3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S11"
+      sourceLocation="39,167" sourceTerminal="RIGHT" target="S13"
+      targetLocation="57,172" targetTerminal="LEFT" uid="T34">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="f1c64d26-b7ac-4509-8784-c4ceab6d747f" blue="204"
+      green="255" height="507" label="Pool" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Pool" red="255" uid="W10" width="922">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="bc04778e-402a-491c-927b-5e20f1c91462" blue="128"
+    containerType="LEGACY_WEBM_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false" wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.:Pool">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="9b1dfa07-2388-40d9-a9b3-2945dc6cdda8"
+      label="Pool" logicalServer="Default" poolName="8" stepLock="false"
+      uid="S7" useCorrelation="false"
+      wrapperService="StEPSProcessPaymentsAwardsBPM.StEPSAwardPaymentProcessing.StEPSAwardPaymentProcessing_4.Default:Pool"
+      x="86" y="20">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+  <qualityOfService expressPipeline="true" minLogLevel="5"
+    optimizeLocally="true" volatileTracking="false" volatileTransition="true"/>
+  <edaIntrinsics processEvent="false" stepEvent="false"/>
+  <easeOfOperations enableProcessForTrackingInTarget="false" enableProcessInTarget="false"/>
+</businessProcessDiagram>

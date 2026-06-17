@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="82326226-97b7-470a-ba73-c1cd89334b50" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Administrator" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  name="StudentApplicationProcess" processCategory="" rnSync="false"
+  runtimeVersion="4" transitionLabelPref="expression"
+  unSynchJoinDeadPath="true" version="9.12.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0" label="isValid"
+    name="{ProcessNamespace}isValid" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="workflow"
+    name="{ProcessNamespace}workflow" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="StudentApplication"
+    name="{ProcessNamespace}StudentApplication" type="{StEPS_Process_StudentApplication.documents}StudentApplication"/>
+  <logicalDataItem Id="" description="" dimension="0" label="QACheck"
+    name="{ProcessNamespace}QACheck" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="workItem"
+    name="{ProcessNamespace}workItem" type="{EDM.documents}workItem"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ExceptionMsg" name="{ProcessNamespace}ExceptionMsg" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="1" label="DisplayMsg"
+    name="{ProcessNamespace}DisplayMsg" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="UserID"
+    name="{ProcessNamespace}UserID" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="StudentApplicationInputEnv"
+    name="{ProcessNamespace}StudentApplicationInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="QAStudentApplicationInputEnv"
+    name="{ProcessNamespace}QAStudentApplicationInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0" label="qaID"
+    name="{ProcessNamespace}qaID" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="status"
+    name="{ProcessNamespace}status" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="StudentApplicationOutputEnv"
+    name="{ProcessNamespace}StudentApplicationOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="Student_Data" name="{ProcessNamespace}Student_Data" type="{StEPS_Common.documents.StudentApplication}Student_Data"/>
+  <logicalDataItem Id="" description="" dimension="0" label="Task_Data"
+    name="{ProcessNamespace}Task_Data" type="{StEPS_Common.documents.StudentApplication}Task_Data"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="returnCaseWork" name="{ProcessNamespace}returnCaseWork" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="anyBen2IncomeData" name="{ProcessNamespace}anyBen2IncomeData" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="anyBen1IncomeData" name="{ProcessNamespace}anyBen1IncomeData" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="Ben2ID"
+    name="{ProcessNamespace}Ben2ID" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="Ben1ID"
+    name="{ProcessNamespace}Ben1ID" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="InsertBenefactor1" name="{ProcessNamespace}InsertBenefactor1" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="InsertBenefactor2" name="{ProcessNamespace}InsertBenefactor2" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="UpdateBenefactor1" name="{ProcessNamespace}UpdateBenefactor1" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="UpdateBenefactor2" name="{ProcessNamespace}UpdateBenefactor2" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="QAStudentApplicationOutputEnv"
+    name="{ProcessNamespace}QAStudentApplicationOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="exceptionMsg" name="{ProcessNamespace}exceptionMsg" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <logicalDataItem Id="" description="" dimension="0" label="courseCode"
+    name="{ProcessNamespace}courseCode" type="{http://webmethods.com/bpm/ISType/2006}string"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <pool Id="6e1251d7-bce6-4925-b2a8-a2a618c23afd" blue="128"
+    containerType="LEGACY_WEBM_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false" wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.:Pool">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="7ec1e662-4592-48d6-b058-c61829c939da"
+      label="StEPSProcessStudentApplicationBPM" logicalServer="Default"
+      poolName="4" stepLock="false" uid="S3" useCorrelation="false"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:Pool"
+      x="15" y="7">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <pool Id="3fc34691-0280-45de-baf1-e08b37352d68" blue="128"
+    containerType="LEGACY_WEBM_SUBPROCESS" errorHandler="S75"
+    external="false" externalizeConditions="false" green="128"
+    isCollapsed="false" isCompensating="false" isTestAfter="false"
+    label="StEPSProcessStudentApplicationBPM" labelBlue="255"
+    labelGreen="204" labelRed="153" logicalServer="" loopMaximum="0"
+    loopMaximumField="" name="4" orientation="vertical" red="128"
+    retryCount="0" stepLock="false" uid="P5" useCorrelation="false" wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.:StEPSProcessStudentApplicationBPM">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <dataItem type="{EDM.documents}workItem" uid="V377"/>
+    <dataItem type="{EDM.documents}workItem" uid="V192"/>
+    <dataItem type="{EDM.documents}workItem" uid="V244"/>
+    <dataItem type="{EDM.documents}workItem" uid="V166"/>
+    <dataItem type="{EDM.documents}workItem" uid="V218"/>
+    <receiveStep Id="0464b301-295a-4104-887f-6e4549fbca8e"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="START"
+      externalizeConditions="false" height="35"
+      isStartStepServiceRequired="true" label="ReceiveStudApp"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      outputMessageType="{EDM.documents}workItem"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S11" useCorrelation="false" width="35"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:ReceiveStudApp"
+      x="15" y="84">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}workItem"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter>
+        <row chainOperator="or" leftFieldPath="Header/BatchTypeCode"
+          leftOperand="{ProcessNamespace}workItem" operator="=" rightOperand="'31'"/>
+        <row chainOperator="or" leftFieldPath="Header/BatchTypeCode"
+          leftOperand="{ProcessNamespace}workItem" operator="=" rightOperand="'32'"/>
+        <row chainOperator="" leftFieldPath="Header/BatchTypeCode"
+          leftOperand="{ProcessNamespace}workItem" operator="=" rightOperand="'54'"/>
+      </wmExpressionFilter>
+    </receiveStep>
+    <terminateStep Id="c84ea2c1-d633-4d11-8b9f-28333ad5ec8e"
+      escalateFailure="false" height="35" label="Terminate"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" terminateStatus="FAIL" uid="S78"
+      useCorrelation="false" width="35"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:Terminate"
+      x="1031" y="561">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </terminateStep>
+    <invokeStep Id="f3195c00-dc89-43c5-b48e-b097f2da8ff4"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:TransformStudApp"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:TransformStudApp"
+      invokeName="TransformStudApp" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="TransformStudApp" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_task.png" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S17"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:TransformStudApp"
+      x="39" y="342">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}workItem"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}isValid"/>
+      <output name="{ProcessNamespace}StudentApplication"/>
+      <output name="{ProcessNamespace}ExceptionMsg"/>
+      <output name="{ProcessNamespace}workItem"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="7357e16b-e3ec-4e1b-98f6-2cbe59a18020"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:Exception"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:Exception"
+      invokeName="Exception" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false" label="Exception"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_error_stop_sign.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S27"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:Exception"
+      x="59" y="557">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}isValid"/>
+      <input name="{ProcessNamespace}ExceptionMsg"/>
+      <input name="{ProcessNamespace}exceptionMsg"/>
+      <input name="{ProcessNamespace}workItem"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="46499050-9f71-47e0-8825-36b786849fb1"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:ValidateStudApp"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:ValidateStudApp"
+      invokeName="ValidateStudApp" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false" label="ValidateStudApp"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_purchase_order.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S37"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:ValidateStudApp"
+      x="180" y="342">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}isValid"/>
+      <input name="{ProcessNamespace}StudentApplication"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}StudentApplication"/>
+      <output name="{ProcessNamespace}workflow"/>
+      <output name="{ProcessNamespace}DisplayMsg"/>
+      <output name="{ProcessNamespace}UserID"/>
+      <output name="{ProcessNamespace}qaID"/>
+      <output name="{ProcessNamespace}anyBen2IncomeData"/>
+      <output name="{ProcessNamespace}anyBen1IncomeData"/>
+      <output name="{ProcessNamespace}Ben2ID"/>
+      <output name="{ProcessNamespace}Ben1ID"/>
+      <output name="{ProcessNamespace}InsertBenefactor1"/>
+      <output name="{ProcessNamespace}InsertBenefactor2"/>
+      <output name="{ProcessNamespace}UpdateBenefactor1"/>
+      <output name="{ProcessNamespace}UpdateBenefactor2"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="826ff7b8-ecf5-4d88-b679-b27a80c8b767"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:SaveStudApp"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:SaveStudApp"
+      invokeName="SaveStudApp" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false" label="SaveStudApp"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_document_stack.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S41"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:SaveStudApp"
+      x="318" y="342">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}workflow"/>
+      <input name="{ProcessNamespace}StudentApplication"/>
+      <input name="{ProcessNamespace}DisplayMsg"/>
+      <input name="{ProcessNamespace}UserID"/>
+      <input name="{ProcessNamespace}qaID"/>
+      <input name="{ProcessNamespace}Ben1ID"/>
+      <input name="{ProcessNamespace}Ben2ID"/>
+      <input name="{ProcessNamespace}UpdateBenefactor1"/>
+      <input name="{ProcessNamespace}UpdateBenefactor2"/>
+      <input name="{ProcessNamespace}InsertBenefactor1"/>
+      <input name="{ProcessNamespace}InsertBenefactor2"/>
+      <input name="{ProcessNamespace}anyBen1IncomeData"/>
+      <input name="{ProcessNamespace}anyBen2IncomeData"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}workflow"/>
+      <output name="{ProcessNamespace}Student_Data"/>
+      <output name="{ProcessNamespace}Task_Data"/>
+      <output name="{ProcessNamespace}courseCode"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="da311450-fe8a-4f90-9eda-b9bf53f58fd1"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:CheckQA"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:CheckQA"
+      invokeName="CheckQA" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="CheckQA" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" ornamentKey="32_success.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S46"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:CheckQA"
+      x="601" y="342">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}workflow"/>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}workflow"/>
+      <output name="{ProcessNamespace}QACheck"/>
+      <output name="{ProcessNamespace}Student_Data"/>
+      <output name="{ProcessNamespace}Task_Data"/>
+      <output name="{ProcessNamespace}courseCode"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="56b8f3fd-a636-4d1f-a9e8-e8ccd27ff000"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:Finish"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:Finish"
+      invokeName="Finish" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="Finish" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" ornamentKey="32_gear.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S50"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:Finish"
+      x="1002" y="176">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}workflow"/>
+      <input name="{ProcessNamespace}QACheck"/>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="3dce61df-4e5f-4268-a8b2-9b5488f70dbd"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:CalculateAward"
+      invokeLocation="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_1.Default:CalculateAward"
+      invokeName="CalculateAward" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false" label="CalculateAward"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" ornamentKey="32_workflow.png"
+      retryCount="0" routingRuleSet="" ruleType="BLAZERULE"
+      stepLock="false" uid="S54" useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:CalculateAward"
+      x="990" y="439">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}status"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="8e31b8e7-ef77-4883-bdff-8e9471975b94"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="P/StudentTaskV2"
+      invokeId="2FAD9E78-AD6F-50D2-FA3B-628375B5C488" invokeLocation=""
+      invokeName="Student Task V2" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="StudentApplication" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_person_standing.png" retryCount="0"
+      routingRuleSet="" ruleType="TASK" stepLock="false" uid="S62"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:StudentApplication"
+      x="459" y="85">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}StudentApplicationInputEnv"/>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}StudentApplicationOutputEnv"/>
+      <output name="{ProcessNamespace}Student_Data"/>
+      <output name="{ProcessNamespace}Task_Data"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="52967510-5db4-47f2-8aed-1e1cf9a02aac"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:Error"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:Error"
+      invokeName="Error" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="Error" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_error_stop_sign.png" retryCount="0"
+      routingRuleSet="" ruleType="BLAZERULE" stepLock="false" uid="S75"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:Error"
+      x="912" y="557">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="ee993467-af56-4015-9568-9e8426e31c93"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:setWorkItemVariablesCW"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:setWorkItemVariablesCW"
+      invokeName="setWorkItemVariablesCW" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="setWorkItemVariablesCW" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_gear.png" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S138"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:setWorkItemVariablesCW"
+      x="318" y="177">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}workflow"/>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}StudentApplicationInputEnv"/>
+      <output name="{ProcessNamespace}Student_Data"/>
+      <output name="{ProcessNamespace}Task_Data"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="89288d05-49d3-41cc-a916-b549d9e830cc"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53"
+      invokeContainer="SAAS_StEPS_StudentApplicationProcess.flow"
+      invokeId="SAAS_StEPS_StudentApplicationProcess.flow:setWorkItemVariablesQA"
+      invokeLocation="SAAS_StEPS_StudentApplicationProcess.flow:setWorkItemVariablesQA"
+      invokeName="setWorkItemVariablesQA" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="setWorkItemVariablesQA" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_gear.png" retryCount="0" routingRuleSet=""
+      ruleType="BLAZERULE" stepLock="false" uid="S146"
+      useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:setWorkItemVariablesQA"
+      x="601" y="176">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}workflow"/>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}QAStudentApplicationInputEnv"/>
+      <output name="{ProcessNamespace}Student_Data"/>
+      <output name="{ProcessNamespace}Task_Data"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="189769e3-e1ad-46f9-8d37-440b38ccb758"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="53" invokeContainer="P/StudentTaskV2"
+      invokeId="2FAD9E78-AD6F-50D2-FA3B-628375B5C488" invokeLocation=""
+      invokeName="Student Task V2" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="QAStudentApplication" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S293" useCorrelation="false" width="83"
+      wrapperService="StEPSProcessStudentApplicationBPM.StudentApplicationProcess.StudentApplicationProcess_4.Default:QAStudentApplication"
+      x="746" y="85">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}QAStudentApplicationInputEnv"/>
+      <input name="{ProcessNamespace}Student_Data"/>
+      <input name="{ProcessNamespace}Task_Data"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}QAStudentApplicationOutputEnv"/>
+      <output name="{ProcessNamespace}returnCaseWork"/>
+      <output name="{ProcessNamespace}Student_Data"/>
+      <output name="{ProcessNamespace}Task_Data"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="301421cf-38b7-47de-8f78-6e585f9f61f1" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S11"
+      sourceLocation="32,119" sourceTerminal="BOTTOM" target="S17"
+      targetLocation="80,342" targetTerminal="TOP" uid="T20">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a8190e6e-ec36-48cc-bdd0-5115f90f751b" blue="255"
+      conditionDescription="" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="BENDPOINT" red="0"
+      source="S17" sourceLocation="80,395" sourceTerminal="BOTTOM"
+      target="S27" targetLocation="100,557" targetTerminal="TOP" uid="T30">
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="89" y="499">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}isValid" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="00f25346-1625-41f9-a9e0-db14764cb67e" blue="255"
+      conditionDescription="" conditionText="isValid = true"
+      conditionType="IF" green="0" lineShape="CURVE" red="0"
+      source="S17" sourceLocation="122,368" sourceTerminal="RIGHT"
+      target="S37" targetLocation="180,368" targetTerminal="LEFT" uid="T40">
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="135" y="391">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}isValid" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="40c78077-95bc-4161-b4cb-f4ce37170e54" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S37"
+      sourceLocation="263,368" sourceTerminal="RIGHT" target="S41"
+      targetLocation="318,368" targetTerminal="LEFT" uid="T44">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="336cd602-c5c9-476a-9d05-efb9ce9a10a2" blue="255"
+      conditionDescription="" conditionText="workflow = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S41" sourceLocation="401,368" sourceTerminal="RIGHT"
+      target="S46" targetLocation="601,368" targetTerminal="LEFT" uid="T49">
+      <bendpoint index="0" location="516,405" weight="0.5"/>
+      <bendpoint index="1" location="516,405" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="474" y="391">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}workflow" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="0e6599e6-1ffa-489e-8bed-d50a5610476e" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S62"
+      sourceLocation="500,138" sourceTerminal="BOTTOM" target="S46"
+      targetLocation="601,368" targetTerminal="LEFT" uid="T67">
+      <bendpoint index="0" location="516,405" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="97d9a925-c8bf-4e34-b797-55a3f6aff524" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S75"
+      sourceLocation="995,583" sourceTerminal="RIGHT" target="S78"
+      targetLocation="1031,578" targetTerminal="LEFT" uid="T79">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="4212e4a3-9335-40d3-a7fe-50a5bf87d35b" blue="255"
+      conditionDescription=""
+      conditionText="workflow = false and&#xa;QACheck = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S46" sourceLocation="684,368" sourceTerminal="RIGHT"
+      target="S54" targetLocation="990,465" targetTerminal="LEFT" uid="T96">
+      <bendpoint index="0" location="860,405" weight="0.5"/>
+      <bendpoint index="1" location="860,502" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="808" y="425">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and" leftFieldPath=""
+          leftOperand="{ProcessNamespace}workflow" operator="=" rightOperand="'false'"/>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}QACheck" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="f2afc5a6-61a9-4c64-badf-660fa4698c90" blue="255"
+      conditionDescription=""
+      conditionText="workflow = true and&#xa;QACheck = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S46" sourceLocation="684,368" sourceTerminal="RIGHT"
+      target="S50" targetLocation="1002,202" targetTerminal="LEFT" uid="T106">
+      <bendpoint index="0" location="866,405" weight="0.5"/>
+      <bendpoint index="1" location="866,239" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="817" y="294">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and" leftFieldPath=""
+          leftOperand="{ProcessNamespace}workflow" operator="=" rightOperand="'true'"/>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}QACheck" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="550e0352-3e1e-46ae-adf9-c9ec1bb8f9e4" blue="255"
+      conditionDescription="" conditionText="workflow = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S41" sourceLocation="359,342" sourceTerminal="TOP"
+      target="S138" targetLocation="359,230" targetTerminal="BOTTOM" uid="T65">
+      <bendpoint index="0" location="375,322" weight="0.5"/>
+      <bendpoint index="1" location="375,322" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="335" y="309">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}workflow" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="2a4befda-3627-4a95-babc-5a3e9bb9bda3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S138"
+      sourceLocation="401,203" sourceTerminal="RIGHT" target="S62"
+      targetLocation="459,111" targetTerminal="LEFT" uid="T141">
+      <bendpoint index="0" location="446,240" weight="0.5"/>
+      <bendpoint index="1" location="446,148" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="346f2a57-7fcb-4c75-b223-e4238024a5aa" blue="255"
+      conditionDescription="" conditionText="QACheck = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S46" sourceLocation="642,342" sourceTerminal="TOP"
+      target="S146" targetLocation="642,229" targetTerminal="BOTTOM" uid="T103">
+      <bendpoint index="0" location="658,322" weight="0.5"/>
+      <bendpoint index="1" location="658,322" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="618" y="308">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath=""
+          leftOperand="{ProcessNamespace}QACheck" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="f48d9479-6ded-406b-bc4b-2e713355b8c2" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="CURVE" red="0" source="S54"
+      sourceLocation="1031,439" sourceTerminal="TOP" target="S50"
+      targetLocation="1043,229" targetTerminal="BOTTOM" uid="T278">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="b3b4f09a-2b56-480e-b14e-9ac762c7f52a" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S146"
+      sourceLocation="684,202" sourceTerminal="RIGHT" target="S293"
+      targetLocation="746,111" targetTerminal="LEFT" uid="T149">
+      <bendpoint index="0" location="730,239" weight="0.5"/>
+      <bendpoint index="1" location="730,148" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="702" y="135">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="621f2205-fdbd-45ef-a085-64093fe33757" blue="255"
+      conditionDescription="" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S293" sourceLocation="829,111" sourceTerminal="RIGHT"
+      target="S50" targetLocation="1002,202" targetTerminal="LEFT" uid="T137">
+      <bendpoint index="0" location="930,148" weight="0.5"/>
+      <bendpoint index="1" location="930,239" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="914" y="179">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="c1e73900-8b1b-4e36-9b06-e3880d7419f6" blue="255"
+      conditionDescription=""
+      conditionText="Task_Data/returnCaseWork = true" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S293"
+      sourceLocation="782,85" sourceTerminal="TOP" target="S62"
+      targetLocation="542,111" targetTerminal="RIGHT" uid="T136">
+      <bendpoint index="0" location="798,112" weight="0.5"/>
+      <bendpoint index="1" location="678,112" weight="0.5"/>
+      <bendpoint index="2" location="678,148" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="595" y="121">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="returnCaseWork"
+          leftOperand="{ProcessNamespace}Task_Data" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="1d2d9a9c-45ef-4b40-9786-83fe256592d7" blue="255"
+      green="255" height="702" label="Auto" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Auto" red="128" uid="W6" width="449">
+      <documentation/>
+    </swimlane>
+    <swimlane Id="a360b262-fa5f-4095-9b00-d2360eaba9ac" blue="204"
+      green="255" height="702" label="CaseWorker" labelBlue="255"
+      labelGreen="238" labelRed="221" name="CaseWorker" red="255"
+      uid="W7" width="136">
+      <documentation/>
+    </swimlane>
+    <swimlane Id="b1dc3c24-3fb5-4b1c-ab9a-953ec6d28bc0" blue="255"
+      green="255" height="702" label="Auto" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Auto" red="128" uid="W8" width="139">
+      <documentation/>
+    </swimlane>
+    <swimlane Id="563bb5ef-92ba-4715-86c4-2b0360616043" blue="192"
+      green="128" height="702" label="Quality Assurance (QA)"
+      labelBlue="255" labelGreen="238" labelRed="221"
+      name="Quality Assurance (QA)" red="255" uid="W9" width="160">
+      <documentation/>
+    </swimlane>
+    <swimlane Id="01ae799c-40e0-4396-8ebc-a1fb7a9f0739" blue="255"
+      green="255" height="702" label="Auto" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Auto" red="128" uid="W10" width="261">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <documentation/>
+  <qualityOfService expressPipeline="false" minLogLevel="5"
+    optimizeLocally="true" volatileTracking="false" volatileTransition="false"/>
+  <edaIntrinsics processEvent="false" stepEvent="false"/>
+  <easeOfOperations enableProcessForTrackingInTarget="false" enableProcessInTarget="false"/>
+</businessProcessDiagram>
